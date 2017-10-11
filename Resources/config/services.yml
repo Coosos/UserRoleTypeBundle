@@ -1,0 +1,5 @@
+services:
+    coosos_user_role_type.form.user_role_type:
+        class: Coosos\UserRoleTypeBundle\Form\Type\UserRoleType
+        arguments: ['%security.role_hierarchy.roles%', '@security.authorization_checker']
+        tags: [form.type]
