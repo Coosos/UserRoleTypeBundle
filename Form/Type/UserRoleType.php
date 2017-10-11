@@ -45,13 +45,14 @@ class UserRoleType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
 
             $form = $event->getForm();
+            $formOptions = $form->getConfig()->getOptions();
             $user = $event->getForm()->getParent()->getData();
             $permissionData = $event->getData();
 
             foreach ($this->roleHierarchy as $key => $value) {
                 $options = ["required" => false];
 
-                if ($form->getConfig()->getOptions()["coosos_security_checked"] == "strict"
+                if ($formOptions["coosos_security_checked"] == "strict"
                     && !$this->authorizationChecker->isGranted($key, $user)) {
                     $options["disabled"] = true;
                 }
@@ -60,7 +61,7 @@ class UserRoleType extends AbstractType
                     $options["attr"]["checked"] = true;
                 }
 
-                $form->add($key, CheckboxType::class, $options);
+                $form->add($key, $formOptions["coosos_input_type"], $options);
             }
         });
 
@@ -73,5 +74,6 @@ class UserRoleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault("coosos_security_checked", "strict");
+        $resolver->setDefault("coosos_input_type", CheckboxType::class);
     }
 }
