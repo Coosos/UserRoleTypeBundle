@@ -2,6 +2,7 @@
     "name": "coosos/user-role-type-bundle",
     "description": "Generates a symfony form for user roles",
     "type": "symfony-bundle",
+    "keywords": ["Symfony", "Role", "Form"],
     "license": "LGPL-3.0",
     "authors": [
         {
