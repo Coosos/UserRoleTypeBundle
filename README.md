@@ -45,3 +45,11 @@ file of your project :
     use Coosos\UserRoleTypeBundle\Form\Type;
     ...
     $builder->add("roles", UserRoleType::class);
+
+### Form twig
+
+_example_
+
+    {{ form_start(userForm) }}
+    {{ form_row(userForm.roles.ROLE_ADMIN) }}
+    {{ form_end(userForm) }}
