@@ -44,7 +44,7 @@ file of your project :
 
     use Coosos\UserRoleTypeBundle\Form\Type;
     ...
-    $builder->add("roles", UserRoleType::class);
+    $builder->add("roles", UserRoleType::class, ["coosos_security_checked" => "strict"]);
 
 ### Form twig
 
@@ -53,3 +53,10 @@ _example_
     {{ form_start(userForm) }}
     {{ form_row(userForm.roles.ROLE_ADMIN) }}
     {{ form_end(userForm) }}
+
+## Option
+
+* **coosos_security_checked (default="strict")**
+  * strict = Prevents from being able to attribute a higher grade than his own
+* **coosos_input_type (default="Symfony\Component\Form\Extension\Core\Type\CheckboxType")**
+  * Allows you to select another type of input (interesting for customize)  
