@@ -1,5 +1,7 @@
 # Coosos/UserRoleTypeBundle
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731/mini.png)](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731)
+
 ## Requirements
 
 * Symfony 3.0 and greater
