@@ -43,7 +43,8 @@ before_script:
     - php composer.phar require symfony/yaml:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/config:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/dependency-injection:${SYMFONY_VERSION} --no-update
-    - php composer.phar require matthiasnoback/symfony-dependency-injection-test:${DEPENDENCY_INJECTION_TEST_VERSION} --no-update
+    - php composer.phar require symfony/http-kernel:${DEPENDENCY_INJECTION_TEST_VERSION} --no-update
+    - php composer.phar require symfony/options-resolver:${DEPENDENCY_INJECTION_TEST_VERSION} --no-update
     - COMPOSER_MEMORY_LIMIT=-1 php composer.phar update --no-interaction
 
 script:
