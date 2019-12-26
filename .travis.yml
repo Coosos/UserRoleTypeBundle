@@ -37,7 +37,6 @@ matrix:
 
 before_script:
     - curl -s http://getcomposer.org/installer | php
-    - php composer.phar global require hirak/prestissimo
     - php composer.phar require symfony/form:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/security-bundle:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/yaml:${SYMFONY_VERSION} --no-update
