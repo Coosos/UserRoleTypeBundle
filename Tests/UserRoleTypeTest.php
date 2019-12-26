@@ -5,6 +5,7 @@ namespace Coosos\UserRoleTypeBundle\Tests;
 use Coosos\UserRoleTypeBundle\Form\Type\UserRoleType;
 use Coosos\UserRoleTypeBundle\Tests\Form\Type\TestUserType;
 use Generator;
+use ReflectionException;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -31,8 +32,10 @@ class UserRoleTypeTest extends TypeTestCase
 
     /**
      * @inheritDoc
+     *
+     * @throws ReflectionException
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->roles = ['ROLE_ADMIN' => ['ROLE_USER'], 'ROLE_SUPER_ADMIN' => ['ROLE_USER', 'ROLE_ADMIN']];
         $this->authorizationChecker = $this->getMockBuilder(AuthorizationCheckerInterface::class)->getMock();

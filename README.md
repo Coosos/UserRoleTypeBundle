@@ -4,8 +4,10 @@
 
 ## Requirements
 
-* Symfony 3.0 and greater
-* PHP 5.5.9 and greater
+| Package       | Version          |
+| ------------- | ---------------- |
+| PHP           | ^7.2             |
+| Symfony       | ^3.4, ^4.0, ~5.0 |
 
 ## Installation
 
