@@ -6,7 +6,7 @@
 
 | Package       | Version          |
 | ------------- | ---------------- |
-| PHP           | ^7.2             |
+| PHP           | ^7.1, ^7.2       |
 | Symfony       | ^3.4, ^4.0, ~5.0 |
 
 ## Installation
@@ -16,7 +16,9 @@
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle :
 
-    $ composer require coosos/user-role-type-bundle
+```sh
+composer require "coosos/user-role-type-bundle" "^2.0"
+```
     
 This command is used if composer is installed in your system.
 

@@ -4,18 +4,30 @@ cache:
         - $HOME/.composer/cache/files
 
 php:
+    - 7.1
     - 7.2
     - 7.3
     - 7.4
 
 env:
-    - SYMFONY_VERSION=3.4.*
-    - SYMFONY_VERSION=4.0.*
-    - SYMFONY_VERSION=4.1.*
-    - SYMFONY_VERSION=4.2.*
-    - SYMFONY_VERSION=4.3.*
-    - SYMFONY_VERSION=4.4.*
-    - SYMFONY_VERSION=5.0.*
+    - SYMFONY_VERSION=3.4.* PHPUNIT_VERSION=7.x DEPENDENCY_INJECTION_TEST_VERSION=^3.0
+    - SYMFONY_VERSION=4.0.* PHPUNIT_VERSION=7.x DEPENDENCY_INJECTION_TEST_VERSION=^3.0
+    - SYMFONY_VERSION=4.1.* PHPUNIT_VERSION=7.x DEPENDENCY_INJECTION_TEST_VERSION=^3.0
+    - SYMFONY_VERSION=4.2.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+    - SYMFONY_VERSION=4.3.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+    - SYMFONY_VERSION=4.4.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+    - SYMFONY_VERSION=5.0.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+
+matrix:
+    exclude:
+        - php: 7.1
+          env: SYMFONY_VERSION=4.2.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+        - php: 7.1
+          env: SYMFONY_VERSION=4.3.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+        - php: 7.1
+          env: SYMFONY_VERSION=4.4.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
+        - php: 7.1
+          env: SYMFONY_VERSION=5.0.* PHPUNIT_VERSION=8.x DEPENDENCY_INJECTION_TEST_VERSION=^4.0
 
 before_script:
     - curl -s http://getcomposer.org/installer | php
@@ -25,7 +37,8 @@ before_script:
     - php composer.phar require symfony/yaml:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/config:${SYMFONY_VERSION} --no-update
     - php composer.phar require symfony/dependency-injection:${SYMFONY_VERSION} --no-update
+    - php composer.phar require matthiasnoback/symfony-dependency-injection-test:${DEPENDENCY_INJECTION_TEST_VERSION} --no-update
     - COMPOSER_MEMORY_LIMIT=-1 php composer.phar update --no-interaction
 
 script:
-    - php composer.phar run-test-suite
+    - vendor/bin/simple-phpunit --configuration phpunit-${PHPUNIT_VERSION}.xml.dist
