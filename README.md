@@ -1,6 +1,7 @@
 # Coosos/UserRoleTypeBundle
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731/mini.png)](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731)
+[![Build Status](https://travis-ci.com/Coosos/UserRoleTypeBundle.svg?branch=master)](https://travis-ci.org/Coosos/UserRoleTypeBundle)
 
 ## Requirements
 

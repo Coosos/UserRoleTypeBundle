@@ -3,7 +3,7 @@
     "description": "Generates a symfony form for user roles",
     "type": "symfony-bundle",
     "keywords": ["Symfony", "Role", "Form"],
-    "license": "LGPL-3.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rémy Lescallier",
