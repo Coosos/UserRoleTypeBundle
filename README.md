@@ -6,7 +6,7 @@
 
 | Package       | Version          |
 | ------------- | ---------------- |
-| PHP           | ^7.1, ^7.2       |
+| PHP           | ^7.1             |
 | Symfony       | ^3.4, ^4.0, ~5.0 |
 
 ## Installation
