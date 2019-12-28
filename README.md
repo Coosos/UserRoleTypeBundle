@@ -1,11 +1,14 @@
 # Coosos/UserRoleTypeBundle
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731/mini.png)](https://insight.sensiolabs.com/projects/f839d923-ae63-4cdf-b452-920415c5f731)
+[![Build Status](https://travis-ci.com/Coosos/UserRoleTypeBundle.svg?branch=master)](https://travis-ci.org/Coosos/UserRoleTypeBundle)
 
 ## Requirements
 
-* Symfony 3.0 and greater
-* PHP 5.5.9 and greater
+| Package       | Version          |
+| ------------- | ---------------- |
+| PHP           | ^7.1             |
+| Symfony       | ^3.4, ^4.0, ~5.0 |
 
 ## Installation
 
@@ -14,7 +17,9 @@
 Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle :
 
-    $ composer require coosos/user-role-type-bundle
+```sh
+composer require "coosos/user-role-type-bundle" "^2.0"
+```
     
 This command is used if composer is installed in your system.
 

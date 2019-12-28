@@ -3,7 +3,7 @@
     "description": "Generates a symfony form for user roles",
     "type": "symfony-bundle",
     "keywords": ["Symfony", "Role", "Form"],
-    "license": "LGPL-3.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rémy Lescallier",
@@ -12,14 +12,26 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.5.9",
-        "symfony/framework-bundle": "^3.0|^4.0"
+        "php": "^7.1",
+        "symfony/form": "^3.4|^4.0|~5.0",
+        "symfony/security-bundle": "^3.4|^4.0|~5.0",
+        "symfony/yaml": "^3.4|^4.0|~5.0",
+        "symfony/config": "^3.4|^4.0|~5.0",
+        "symfony/dependency-injection": "^3.4|^4.0|~5.0",
+        "symfony/http-kernel": "^3.4|^4.0|~5.0",
+        "symfony/options-resolver": "^3.4|^4.0|~5.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.0",
+        "matthiasnoback/symfony-dependency-injection-test": "^3.0|^4.0"
     },
     "autoload": {
-        "psr-0": { "Coosos\\UserRoleTypeBundle\\" : "" }
+        "psr-4": { "Coosos\\UserRoleTypeBundle\\" : "" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Coosos\\UserRoleTypeBundle\\Tests\\": "Tests/" }
     },
     "support": {
         "docs": "https://github.com/Coosos/UserRoleTypeBundle"
-    },
-    "target-dir": "Coosos/UserRoleTypeBundle"
+    }
 }

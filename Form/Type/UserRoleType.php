@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Role form
+ *
  * @author Lescallier Rémy <lescallier1@gmail.com>
  */
 class UserRoleType extends AbstractType
@@ -21,6 +22,7 @@ class UserRoleType extends AbstractType
      * @var array
      */
     private $roleHierarchy;
+
     /**
      * @var AuthorizationCheckerInterface
      */
@@ -28,40 +30,40 @@ class UserRoleType extends AbstractType
 
     /**
      * UserRoleType constructor.
+     *
      * @param array                         $roleHierarchy
      * @param AuthorizationCheckerInterface $authorizationChecker
      */
-    public function __construct(array $roleHierarchy = [], AuthorizationCheckerInterface $authorizationChecker)
+    public function __construct(array $roleHierarchy, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->roleHierarchy = $roleHierarchy;
         $this->authorizationChecker = $authorizationChecker;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-
             $form = $event->getForm();
             $formOptions = $form->getConfig()->getOptions();
             $user = $event->getForm()->getParent()->getData();
             $permissionData = $event->getData();
 
             foreach ($this->roleHierarchy as $key => $value) {
-                $options = ["required" => false];
+                $options = ['required' => false];
 
-                if ($formOptions["coosos_security_checked"] == "strict"
+                if ($formOptions['coosos_security_checked'] === 'strict'
                     && !$this->authorizationChecker->isGranted($key, $user)) {
-                    $options["disabled"] = true;
+                    $options['disabled'] = true;
                 }
 
                 if (in_array($key, $permissionData)) {
-                    $options["attr"]["checked"] = true;
+                    $options['attr']['checked'] = true;
                 }
 
-                $form->add($key, $formOptions["coosos_input_type"], $options);
+                $form->add($key, $formOptions['coosos_input_type'], $options);
             }
         });
 
@@ -69,11 +71,13 @@ class UserRoleType extends AbstractType
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * @inheritdoc
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault("coosos_security_checked", "strict");
-        $resolver->setDefault("coosos_input_type", CheckboxType::class);
+        $resolver->setDefaults([
+            'coosos_security_checked' => 'strict',
+            'coosos_input_type' => CheckboxType::class,
+        ]);
     }
 }
